@@ -1,20 +1,20 @@
 import { async, ComponentFixture, TestBed } from '@angular/core/testing';
 
-import { SpinnerComponent } from './spinner.component';
+import { CommandBarComponent } from './command-bar.component';
 
-describe('SpinnerComponent', () => {
-  let component: SpinnerComponent;
-  let fixture: ComponentFixture<SpinnerComponent>;
+describe('CommandBarComponent', () => {
+  let component: CommandBarComponent;
+  let fixture: ComponentFixture<CommandBarComponent>;
 
   beforeEach(async(() => {
     TestBed.configureTestingModule({
-      declarations: [ SpinnerComponent ]
+      declarations: [ CommandBarComponent ]
     })
     .compileComponents();
   }));
 
   beforeEach(() => {
-    fixture = TestBed.createComponent(SpinnerComponent);
+    fixture = TestBed.createComponent(CommandBarComponent);
     component = fixture.componentInstance;
     fixture.detectChanges();
   });

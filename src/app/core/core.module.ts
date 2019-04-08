@@ -8,6 +8,7 @@ import { NoAuthGuard } from './guards/no-auth.guard';
 //import { NgxSpinnerModule } from 'ngx-spinner';
 
 import { TokenInterceptor } from './interceptors/token.interceptor';
+import { HttpGlobalInterceptor } from './interceptors/http.interceptor';
 
 import { throwIfAlreadyLoaded } from './guards/module-import.guard';
 
@@ -19,12 +20,16 @@ import { throwIfAlreadyLoaded } from './guards/module-import.guard';
     providers: [
         AuthGuard,
         NoAuthGuard,
-
         {
             provide: HTTP_INTERCEPTORS,
             useClass: TokenInterceptor,
             multi: true
-        }
+        },
+      {
+        provide: HTTP_INTERCEPTORS,
+        useClass: HttpGlobalInterceptor,
+        multi: true
+      }
     ]
 })
 export class CoreModule {

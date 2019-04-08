@@ -1,6 +1,6 @@
 import { NgModule } from '@angular/core';
 import { Routes, RouterModule } from '@angular/router';
-import { DashboardComponent } from './components/dashboard/dashboard.component';
+import { DashboardComponent } from './dashboard.component';
 // import { ProjectResolver } from './project-resolver.service';
 
 // import { ProjectDetailsComponent } from './pages/project-details/project-details.component';
@@ -8,12 +8,7 @@ import { DashboardComponent } from './components/dashboard/dashboard.component';
 export const routes: Routes = [
     {
       path: '',
-      children: [
-        {
-          path: 'Dashboard',
-          component: DashboardComponent
-        }
-      ]
+      component: DashboardComponent
     },
 ];
 

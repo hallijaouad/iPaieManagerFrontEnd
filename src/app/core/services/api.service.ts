@@ -10,7 +10,7 @@ const BASE_URL = env.serverUrl;
   providedIn: 'root'
 })
 export class ApiService {
-  private options = { headers: new HttpHeaders().set('Content-Type', 'application/json') };
+  //private options = { headers: new HttpHeaders().set('Content-Type', 'application/json') };
 
   constructor(private httpClient: HttpClient) {}
 
@@ -20,13 +20,13 @@ export class ApiService {
 
   public put(path: string, body: object = {}): Observable<any> {
     return this.httpClient
-      .put(BASE_URL + path, JSON.stringify(body), this.options)
+      .put(BASE_URL + path, JSON.stringify(body))
       .pipe(catchError(this.formatErrors));
   }
 
   public post(path: string, body: object = {}): Observable<any> {
     return this.httpClient
-      .post(BASE_URL + path, JSON.stringify(body), this.options)
+      .post(BASE_URL + path, JSON.stringify(body))
       .pipe(catchError(this.formatErrors));
   }
 

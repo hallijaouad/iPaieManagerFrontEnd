@@ -1,20 +1,20 @@
 import { async, ComponentFixture, TestBed } from '@angular/core/testing';
 
-import { SpinnerComponent } from './spinner.component';
+import { SalarieGridComponent } from './salarie-grid.component';
 
-describe('SpinnerComponent', () => {
-  let component: SpinnerComponent;
-  let fixture: ComponentFixture<SpinnerComponent>;
+describe('SalarieGridComponent', () => {
+  let component: SalarieGridComponent;
+  let fixture: ComponentFixture<SalarieGridComponent>;
 
   beforeEach(async(() => {
     TestBed.configureTestingModule({
-      declarations: [ SpinnerComponent ]
+      declarations: [ SalarieGridComponent ]
     })
     .compileComponents();
   }));
 
   beforeEach(() => {
-    fixture = TestBed.createComponent(SpinnerComponent);
+    fixture = TestBed.createComponent(SalarieGridComponent);
     component = fixture.componentInstance;
     fixture.detectChanges();
   });

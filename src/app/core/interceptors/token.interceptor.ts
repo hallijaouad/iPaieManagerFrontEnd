@@ -9,16 +9,19 @@ import {
 //import { Observable } from 'rxjs/Observable';
 import { Observable, of, empty } from 'rxjs';
 
-@Injectable()
+@Injectable( {providedIn: 'root'})
 export class TokenInterceptor implements HttpInterceptor {
-  constructor() {}
-  intercept(request: HttpRequest<any>, next: HttpHandler): Observable<HttpEvent<any>> {
-    
-    // request = request.clone({
-    //   setHeaders: {
-    //     Authorization: `Bearer ${this.auth.getToken()}`
-    //   }
-    // });
-    return next.handle(request);
-  }
+    constructor() { }
+    intercept(request: HttpRequest<any>, next: HttpHandler): Observable<HttpEvent<any>> {
+      request = request.clone({
+        setHeaders: {
+          'Content-Type': 'application/vnd.api+json',
+          'Authorization': `Bearer`
+          //Authorization: `Bearer ${this.auth.getToken() a activer
+        }
+      });
+      console.log(request);
+      return next.handle(request);
+    }
 }
+

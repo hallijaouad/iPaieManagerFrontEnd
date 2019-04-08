@@ -4,6 +4,6 @@ import env from './.env';
 export const environment = {
   production: true,
   version: env.app_version,
-  serverUrl: '/api',
+  serverUrl: 'https://ipaiemanager.herokuapp.com/api/',
   envName: 'PROD',
 };

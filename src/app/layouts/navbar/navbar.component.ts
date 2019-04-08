@@ -12,9 +12,9 @@ export class NavbarComponent implements OnInit {
   version = environment.version;
   navItems = [
     { link: '/dashboard', title: 'Dashboard' },
-    { link: '/salaries', title: 'Salaries' }    
+    { link: '/salaries', title: 'Salaries' }
   ];
-  
+
   constructor() { }
 
   ngOnInit() {

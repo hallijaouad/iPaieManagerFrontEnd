@@ -1,0 +1,10 @@
+<app-command-bar class="app-command-bar" fxHide.xs>
+  <button mat-button class="app-command-bar-button" [routerLink]="['addSalarie']" routerLinkActive="active-link">
+    <mat-icon>add</mat-icon>
+    Ajouter un salarié
+  </button>
+</app-command-bar>
+<div class="content-salarie">
+<router-outlet></router-outlet>
+</div>
+

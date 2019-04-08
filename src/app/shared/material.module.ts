@@ -1,71 +1,86 @@
 import { NgModule } from '@angular/core';
+import { FormsModule, ReactiveFormsModule } from '@angular/forms';
+import {
+  MatDialogModule,
+  MatButtonModule,
+  MatMenuModule,
+  MatToolbarModule,
+  MatIconModule,
+  MatCardModule,
+  MatTableModule,
+  MatTabsModule,
+  MatFormFieldModule,
+  MatInputModule,
+  MatPaginatorModule,
+  MatSortModule,
+  MatSelectModule,
+  MatRadioModule,
+  MatGridListModule,
+  MatListModule,
+  MatDatepickerModule,
+  MatNativeDateModule,
+  NativeDateModule,
+  MatSidenavModule,
+  MatProgressSpinnerModule,
+  MatStepperModule
+} from '@angular/material';
 
-import { MatButtonModule } from '@angular/material/button';
-import { MatToolbarModule } from '@angular/material/toolbar';
-import { MatMenuModule } from '@angular/material/menu';
-import { MatSelectModule } from '@angular/material/select';
-import { MatTabsModule } from '@angular/material/tabs';
-import { MatInputModule } from '@angular/material/input';
-import { MatProgressSpinnerModule } from '@angular/material/progress-spinner';
-import { MatChipsModule } from '@angular/material/chips';
-import { MatSidenavModule } from '@angular/material/sidenav';
-import { MatCheckboxModule } from '@angular/material/checkbox';
-import { MatCardModule } from '@angular/material/card';
-import { MatListModule } from '@angular/material/list';
-import { MatIconModule } from '@angular/material/icon';
-import { MatTooltipModule } from '@angular/material/tooltip';
-import { MatSnackBarModule } from '@angular/material/snack-bar';
-import { MatSlideToggleModule } from '@angular/material/slide-toggle';
-import { MatDividerModule } from '@angular/material/divider';
-import { MatSliderModule } from '@angular/material/';
-import { MatDatepickerModule } from '@angular/material/datepicker';
-import { MatNativeDateModule } from '@angular/material';
+import { CdkTableModule } from '@angular/cdk/table';
 
 @NgModule({
-  declarations: [],
   imports: [
+    CdkTableModule,
     MatButtonModule,
-    MatToolbarModule,
     MatMenuModule,
-    MatSelectModule,
-    MatTabsModule,
-    MatInputModule,
-    MatProgressSpinnerModule,
-    MatChipsModule,
-    MatSidenavModule,
-    MatCheckboxModule,
-    MatCardModule,
-    MatListModule,
+    MatToolbarModule,
     MatIconModule,
-    MatTooltipModule,
-    MatSnackBarModule,
-    MatSlideToggleModule,
-    MatDividerModule,
-    MatSliderModule,
+    MatCardModule,
+    MatTableModule,
+    MatTabsModule,
+    MatFormFieldModule,
+    MatInputModule,
+    MatPaginatorModule,
+    MatSortModule,
+    MatSelectModule,
+    MatRadioModule,
+    FormsModule,
+    ReactiveFormsModule,
+    MatDialogModule,
+    MatGridListModule,
+    MatListModule,
     MatDatepickerModule,
-    MatNativeDateModule
+    MatNativeDateModule,
+    NativeDateModule,
+    MatSidenavModule,
+    MatProgressSpinnerModule,
+    MatStepperModule
   ],
   exports: [
+    CdkTableModule,
     MatButtonModule,
-    MatToolbarModule,
     MatMenuModule,
-    MatSelectModule,
-    MatTabsModule,
-    MatInputModule,
-    MatProgressSpinnerModule,
-    MatChipsModule,
-    MatSidenavModule,
-    MatCheckboxModule,
-    MatCardModule,
-    MatListModule,
+    MatToolbarModule,
     MatIconModule,
-    MatTooltipModule,
-    MatSnackBarModule,
-    MatSlideToggleModule,
-    MatDividerModule,
-    MatSliderModule,
+    MatCardModule,
+    MatTableModule,
+    MatTabsModule,
+    MatFormFieldModule,
+    MatInputModule,
+    MatPaginatorModule,
+    MatSortModule,
+    MatSelectModule,
+    MatRadioModule,
+    FormsModule,
+    ReactiveFormsModule,
+    MatDialogModule,
+    MatGridListModule,
+    MatListModule,
     MatDatepickerModule,
-    MatNativeDateModule
+    MatNativeDateModule,
+    NativeDateModule,
+    MatSidenavModule,
+    MatProgressSpinnerModule,
+    MatStepperModule
   ]
 })
 export class MaterialModule { }

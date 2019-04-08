@@ -3,19 +3,20 @@ import { CommonModule } from '@angular/common';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { RouterModule } from '@angular/router';
 import { MaterialModule } from './material.module';
+import { CommandBarModule } from './components/command-bar/command-bar.module';
 import { ControlMessagesComponent } from './components/control-messages/control-messages.component';
-import { SpinnerComponent } from './components/spinner/spinner.component';
+import { SpinnerModule } from './components/spinner/spinner.module';
+
 
 @NgModule({
     imports: [
         CommonModule,
         FormsModule,
         ReactiveFormsModule,
-        RouterModule  
+        RouterModule
     ],
     declarations: [
       ControlMessagesComponent,
-      SpinnerComponent
     ],
     exports: [
       CommonModule,
@@ -24,7 +25,8 @@ import { SpinnerComponent } from './components/spinner/spinner.component';
       RouterModule,
       MaterialModule,
       ControlMessagesComponent,
-      SpinnerComponent
+      SpinnerModule,
+      CommandBarModule
     ]
 })
 export class SharedModule { }

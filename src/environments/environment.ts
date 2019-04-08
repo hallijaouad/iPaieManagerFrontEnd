@@ -8,7 +8,7 @@ import env from './.env';
 export const environment = {
   production: false,
   version: env.app_version + '-dev',
-  serverUrl: '/api',
+  serverUrl: 'http://localhost:8080/api/',
   envName: 'DEV',
 };
 

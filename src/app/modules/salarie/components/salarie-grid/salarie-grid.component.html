@@ -1,0 +1,59 @@
+<div class="mat-elevation-z8">
+  <mat-menu x-position="before" #menuSalarie="matMenu">
+    <ng-template matMenuContent let-key="key">
+      <button mat-menu-item [routerLink]="['/salaries', key]">
+        <mat-icon mat-list-icon>edit</mat-icon> Modifier le salarié
+      </button>
+      <button mat-menu-item (click)="deleteSalarie(key)">
+        <mat-icon mat-list-icon>remove_circle_outline</mat-icon> Supprimer le salarie
+      </button>
+    </ng-template>
+  </mat-menu>
+
+  <mat-table #table [dataSource]="dataSource" matSort aria-label="Elements">
+    <!-- Matricule -->
+    <ng-container matColumnDef="matricule">
+      <mat-header-cell *matHeaderCellDef mat-sort-header>Matricule</mat-header-cell>>
+      <mat-cell *matCellDef="let row">{{row.matricule}}</mat-cell>
+    </ng-container>
+    <!-- Nom -->
+    <ng-container matColumnDef="nom">
+      <mat-header-cell *matHeaderCellDef mat-sort-header>Nom</mat-header-cell>>
+      <mat-cell *matCellDef="let row">{{row.nom}}</mat-cell>
+    </ng-container>
+
+    <!-- Prénom -->
+    <ng-container matColumnDef="prenom">
+      <mat-header-cell *matHeaderCellDef mat-sort-header>Prénom</mat-header-cell>
+      <mat-cell *matCellDef="let row">{{row.prenom}}</mat-cell>
+    </ng-container>
+
+  <!-- Eamil -->
+  <ng-container matColumnDef="email">
+    <mat-header-cell *matHeaderCellDef mat-sort-header>Email</mat-header-cell>
+    <mat-cell *matCellDef="let row">{{row.email}}</mat-cell>
+  </ng-container>
+
+  <!-- Eamil -->
+  <ng-container matColumnDef="mobile">
+    <mat-header-cell *matHeaderCellDef mat-sort-header>Mobile</mat-header-cell>
+    <mat-cell *matCellDef="let row">{{row.mobile}}</mat-cell>
+  </ng-container>
+
+  <!-- Actions -->
+  <ng-container matColumnDef="actions">
+    <mat-header-cell *matHeaderCellDef mat-sort-header>Actions</mat-header-cell>
+    <mat-cell *matCellDef="let row">
+      <button mat-button [matMenuTriggerFor]="menuSalarie" [matMenuTriggerData]="{key: row.id}">
+      <mat-icon>more_vert</mat-icon>
+    </button></mat-cell>
+  </ng-container>
+
+    <mat-header-row *matHeaderRowDef="displayedColumns"></mat-header-row>
+    <mat-row *matRowDef="let row; columns: displayedColumns;"></mat-row>
+  </mat-table>
+
+  <mat-paginator #paginator [length]="dataSource.data.length" [pageIndex]="0" [pageSize]="15"
+    [pageSizeOptions]="[15, 30, 45, 60]">
+  </mat-paginator>
+</div>

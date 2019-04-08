@@ -23,7 +23,8 @@ export class ContentLayoutComponent implements OnInit {
     //}
   }
 
-  onThemeChange(theme: boolean) {
+  onThemeChange() {
+    //theme: boolean
     /*this.themeService.setDarkTheme(theme);
     this.theme = (theme) ? 'my-dark-theme' : 'my-light-theme';
     console.log(theme);
