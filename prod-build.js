@@ -6,9 +6,7 @@ const concat = require('concat');
     './dist/iPaieManagerFrontEnd/runtime.js',
     './dist/iPaieManagerFrontEnd/es2015-polyfills.js',
     './dist/iPaieManagerFrontEnd/polyfills.js',
-    './dist/iPaieManagerFrontEnd/main.js',
-    './dist/iPaieManagerFrontEnd/5.js',
-    './dist/iPaieManagerFrontEnd/6.js'
+    './dist/iPaieManagerFrontEnd/main.js'
   ];
 
   await fs.ensureDir('D:/j2ee/iPaieManager/iPaieManagerApi/src/main/resources/public');
