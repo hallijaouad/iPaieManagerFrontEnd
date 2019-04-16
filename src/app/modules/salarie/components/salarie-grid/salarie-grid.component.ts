@@ -42,4 +42,9 @@ export class SalarieGridComponent implements OnInit {
   deleteSalarie(id){
     this.salarieService.delete(id).subscribe(res => this.loadSalaries());
   }
+
+  // Edition attestion de salaire
+  getAttestationSalaire(id){
+    this.salarieService.genereAttestationSalaire(id).subscribe(res => null);
+  }
 }

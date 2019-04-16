@@ -5,7 +5,8 @@ import { Observable } from 'rxjs';
 
 const endPointRoutes = {
   salaries: 'salaries',
-  salarie: (id: number) => `salaries/${id}`
+  salarie: (id: number) => `salaries/${id}`,
+  edition: (id: number) => `editions/attestation_salaire/${id}/`
 };
 
 @Injectable({
@@ -16,6 +17,9 @@ export class SalarieService {
   constructor(
     private apiService: ApiService) { }
 
+    /**
+     * Get all salariés
+     */
   getAll(): Observable<Salarie[]> {
     return this.apiService.get(endPointRoutes.salaries);
   }
@@ -37,6 +41,15 @@ export class SalarieService {
 // Suppression d'un salarie
   delete(id){
     return this.apiService.delete(endPointRoutes.salarie(id));
+  }
+
+
+/**
+ * Edition attestation de salaire
+ * @param id 
+ */
+  genereAttestationSalaire(id: number): Observable<Salarie> {
+    return this.apiService.get(endPointRoutes.edition(id));
   }
 
 }
