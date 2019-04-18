@@ -3,6 +3,8 @@ import { Router } from '@angular/router';
 import { FormGroup, FormBuilder, Validators } from '@angular/forms';
 import { tap, delay, finalize, catchError } from 'rxjs/operators';
 import { of } from 'rxjs';
+import { HttpClient, HttpHeaders, HttpResponse } from '@angular/common/http';
+
 
 import { AuthService } from '@app/core';
 
@@ -36,13 +38,11 @@ export class LoginComponent implements OnInit {
 
     const credentials = this.loginForm.value;
 
-    this.authService.login(credentials)
-      .pipe(
-        delay(5000),
-        tap(user => this.router.navigate(['/dashboard'])),
-        finalize(() => this.isLoading = false),
-        catchError(error => of(this.error = error))
-      ).subscribe();
+    this.authService.login(credentials).subscribe((res: any) => {
+      console.log(res.headers.get('Authorization'));
+    }, (err) => {
+      console.log(err);
+    })
   }
 
   private buildForm(): void {

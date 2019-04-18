@@ -5,12 +5,18 @@ import { AuthLayoutComponent } from './layouts/auth-layout/auth-layout.component
 
 import { CONTENT_ROUTES } from '@app/shared';
 
-const routes: Routes = [
+import { AuthGuard } from '@app/core';
 
+const routes: Routes = [
+  {
+    path: '',
+    redirectTo: '/auth/login',
+    pathMatch: 'full'
+  },
   {
     path: '',
     component: ContentLayoutComponent,
-    //canActivate: [NoAuthGuard], // Should be replaced with actual auth guard
+    canActivate: [AuthGuard], // Should be replaced with actual auth guard
     children: CONTENT_ROUTES
   },
   {

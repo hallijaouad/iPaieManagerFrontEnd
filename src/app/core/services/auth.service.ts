@@ -12,8 +12,8 @@ export class AuthService {
 
   constructor(private apiService: ApiService) { }
 
-  login(cur): Observable<User> {
-    return this.apiService.post("login", cur);
+  login(cur){
+    return this.apiService.post("auth", cur);
   }
 
   logout(): Observable<boolean> {

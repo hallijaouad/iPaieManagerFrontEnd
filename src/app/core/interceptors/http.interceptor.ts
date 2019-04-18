@@ -31,6 +31,7 @@ export class HttpGlobalInterceptor implements HttpInterceptor {
         //  this._idleTimeoutSvc.startTimer();
         // }
         if (event instanceof HttpResponse) {
+          console.log(event.headers.getAll)
           this.counter--;
           if (this.counter === 0) {
             this.spinnerService.hide();
@@ -83,16 +84,18 @@ export class HttpGlobalInterceptor implements HttpInterceptor {
   }
 
   private onErrorMessage = (error: any) => {
+    console.log(error)
     //const message = new AppMessageData('Erreur : ', error.message, 'error_outline', 'error');
     //this.dialog.open(AppMessageDialogComponent, { data: message });
   }
 
   private onErrorValidation = (err: any) => {
-    const errors = err.error.error_description;
+    console.log(err)
+    /*const errors = err.error.error_description;
     let msg = '';
     Object.keys(errors).forEach(key => {
       msg += errors[key][0] + '\n';
-    });
+    });*/
     //const message = new AppMessageData('Erreur : ' + err.error.error, msg, 'error_outline', 'error');
     //this.dialog.open(AppMessageDialogComponent, { data: message });
   }

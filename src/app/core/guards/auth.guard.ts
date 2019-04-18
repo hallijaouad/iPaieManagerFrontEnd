@@ -7,7 +7,7 @@ export class AuthGuard implements CanActivate {
     constructor() {}
 
     canActivate(): boolean {
-        return true;
+        return false;
     }
 
 }
