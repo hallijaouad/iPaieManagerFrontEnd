@@ -8,5 +8,9 @@ export const CONTENT_ROUTES: Routes = [
   {
     path: 'salaries',
     loadChildren: 'app/modules/salarie/salarie.module#SalarieModule'
+  },
+  {
+    path: 'admin',
+    loadChildren: 'app/modules/admin/admin.module#AdminModule'
   }
 ];

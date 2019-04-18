@@ -1,10 +1,10 @@
 <h2 mat-dialog-title>{{formTitle}}</h2>
 
-
 <form [formGroup]="salarieForm">
   <input type="hidden" formControlName="id" [(ngModel)]="salarie.id" />
 <div>
-  <mat-form-field class="input-standard">
+  <mat-form-field >
+    <mat-label>Matricule* </mat-label>
     <input matInput placeholder="Matricule*" formControlName="matricule" [(ngModel)]="salarie.matricule" />
     <mat-error *ngIf="salarieForm.get('matricule').invalid && salarieForm.get('matricule').touched">
       {{getFormMessageError('matricule')}}
@@ -13,8 +13,8 @@
 </div>
   <div>
     <mat-form-field class="input-standard">
-      <input matInput placeholder="Nom*" formControlName="nom"
-        [(ngModel)]="salarie.nom" />
+      <mat-label>Nom*</mat-label>
+      <input matInput placeholder="Nom*" formControlName="nom" [(ngModel)]="salarie.nom" />
       <mat-error *ngIf="salarieForm.get('nom').invalid && salarieForm.get('nom').touched">
         {{getFormMessageError('nom')}}
       </mat-error>
@@ -22,6 +22,7 @@
   </div>
   <div>
     <mat-form-field class="input-standard">
+      <mat-label>Prénom*</mat-label>
       <input matInput placeholder="Prénom*" formControlName="prenom" [(ngModel)]="salarie.prenom" />
       <mat-error *ngIf="salarieForm.get('prenom').invalid && salarieForm.get('prenom').touched">
         {{getFormMessageError('prenom')}}
@@ -30,6 +31,7 @@
   </div>
   <div>
     <mat-form-field class="input-standard">
+      <mat-label>Date d'embauche*</mat-label>
       <input matInput placeholder="Date d'embauche*" formControlName="date_embauche" [(ngModel)]="salarie.date_embauche" />
       <mat-error *ngIf="salarieForm.get('date_embauche').invalid && salarieForm.get('date_embauche').touched">
         {{getFormMessageError('date_embauche')}}
@@ -38,6 +40,7 @@
   </div>
   <div>
     <mat-form-field class="input-standard">
+      <mat-label>Email*</mat-label>
       <input matInput placeholder="Email*" formControlName="email"
         [(ngModel)]="salarie.email" />
       <mat-error *ngIf="salarieForm.get('email').invalid && salarieForm.get('email').touched">
@@ -47,6 +50,7 @@
   </div>
   <div>
     <mat-form-field class="input-standard">
+      <mat-label>Mobile</mat-label>
       <input matInput placeholder="Mobile" formControlName="mobile" [(ngModel)]="salarie.mobile" />
       <mat-error *ngIf="salarieForm.get('email').invalid && salarieForm.get('mobile').touched">
         {{getFormMessageError('mobile')}}
