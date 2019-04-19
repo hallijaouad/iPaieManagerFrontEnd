@@ -35,14 +35,8 @@ export class LoginComponent implements OnInit {
 
   login() {
     this.isLoading = true;
-
     const credentials = this.loginForm.value;
-
-    this.authService.login(credentials).subscribe((res: any) => {
-      console.log(res.headers.get('Authorization'));
-    }, (err) => {
-      console.log(err);
-    })
+    this.authService.login(credentials).subscribe(res => this.authService.storeToken(res));
   }
 
   private buildForm(): void {

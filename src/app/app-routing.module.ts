@@ -5,12 +5,14 @@ import { AuthLayoutComponent } from './layouts/auth-layout/auth-layout.component
 
 import { CONTENT_ROUTES } from '@app/shared';
 
-import { AuthGuard } from '@app/core';
+import { AuthGuard, NoAuthGuard} from '@app/core';
+
 
 const routes: Routes = [
   {
-    path: '',
+    path: 'login',
     redirectTo: '/auth/login',
+    canActivate: [NoAuthGuard],
     pathMatch: 'full'
   },
   {
@@ -22,10 +24,11 @@ const routes: Routes = [
   {
     path: 'auth',
     component: AuthLayoutComponent,
+    canActivate: [NoAuthGuard],
     loadChildren: './modules/auth/auth.module#AuthModule'
   },
   // Fallback when no prior routes is matched
-  { path: '**', redirectTo: '/auth/login', pathMatch: 'full' }
+  { path: '**', redirectTo: '/auth/login', pathMatch: 'full', canActivate: [NoAuthGuard] }
 ];
 
 @NgModule({

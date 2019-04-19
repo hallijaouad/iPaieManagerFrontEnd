@@ -3,7 +3,7 @@
 <form [formGroup]="salarieForm">
   <input type="hidden" formControlName="id" [(ngModel)]="salarie.id" />
 <div>
-  <mat-form-field >
+  <mat-form-field class="input-standard">
     <mat-label>Matricule* </mat-label>
     <input matInput placeholder="Matricule*" formControlName="matricule" [(ngModel)]="salarie.matricule" />
     <mat-error *ngIf="salarieForm.get('matricule').invalid && salarieForm.get('matricule').touched">

@@ -31,7 +31,6 @@ export class HttpGlobalInterceptor implements HttpInterceptor {
         //  this._idleTimeoutSvc.startTimer();
         // }
         if (event instanceof HttpResponse) {
-          console.log(event.headers.getAll)
           this.counter--;
           if (this.counter === 0) {
             this.spinnerService.hide();
@@ -40,7 +39,7 @@ export class HttpGlobalInterceptor implements HttpInterceptor {
             case 200: // recupération and update ressource
             case 201: // Create ressoures
             case 204: // delete ressourec
-              if (event.body.message) {
+              if (event.body && event.body.message) {
                 this.onMessageInfo(event.body.message);
               }
               break;
