@@ -3,6 +3,7 @@ import { of, Observable, throwError } from 'rxjs';
 import { ApiService } from './api.service';
 import { User } from '../models/user.model';
 import { Router, CanActivate, ActivatedRouteSnapshot, RouterStateSnapshot } from '@angular/router';
+import { JwtHelperService } from '@auth0/angular-jwt';
 
 
 @Injectable({
@@ -21,19 +22,34 @@ export class AuthService {
     return of(false);
   }
 
-  storeToken(res) {
-    console.log(res.token)
-
+  storeToken(res) {  
     if (res.token){
       localStorage.setItem("token", res.token);
       this.router.navigate(['']);
-    }
+    }    
   }
   getToken() {
-    return localStorage.getItem("token");
+    const helper = new JwtHelperService();
+    const token = localStorage.getItem("token");    
+    const isExpired = helper.isTokenExpired(token);
+    if(isExpired){
+      return false;
+    }
+    return token;    
   }
   removeToken() {
     return localStorage.removeItem("token");
+  }
+
+  getUserAuth(){
+    const helper = new JwtHelperService();
+    const token = this.getToken();
+    if(token){
+      const decodedToken = helper.decodeToken(token);
+      console.log(decodedToken)
+      return decodedToken.sub;
+    }   
+    return null; 
   }
 
 }

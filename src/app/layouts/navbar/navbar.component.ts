@@ -1,6 +1,8 @@
 import { Component, OnInit } from '@angular/core';
 import { environment } from '@env/environment';
 
+import {AuthService} from '@app/core';
+
 
 @Component({
   selector: 'app-navbar',
@@ -15,10 +17,11 @@ export class NavbarComponent implements OnInit {
     { link: '/salaries', title: 'Salaries' }
   ];
 
-  constructor() { }
+  constructor(private authService : AuthService) { }
 
+  public userAuth = null;
   ngOnInit() {
-
+    this.userAuth = this.authService.getUserAuth();
   }
 
 }
