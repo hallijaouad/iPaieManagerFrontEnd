@@ -28,6 +28,8 @@ export class SalarieFormComponent implements OnInit {
     if (id) {
       this.formTitle = "Modification du salarié"
       this.salarieService.getSalarie(id).subscribe(res => this.updateSalarieData(res));
+    }else{
+      this.salarie =  new Salarie();
     }
   }
 
@@ -60,6 +62,30 @@ export class SalarieFormComponent implements OnInit {
           Validators.minLength(3),
           Validators.maxLength(250)
         ])],
+
+        // validation champ numéro cnss
+      'num_cnss': ['',
+      Validators.compose([
+        Validators.required,
+        Validators.minLength(10),
+        Validators.maxLength(10)
+      ])],
+
+         // validation champ contrat
+         'contrat_duree_type': ['',
+         Validators.compose([
+           Validators.required
+         ])],
+      // validation champ poste
+      'poste_intitule': ['',
+      Validators.compose([
+        Validators.required
+      ])],
+
+
+ // validation champ comentaire
+ 'description': [''],
+
 
       // validation champ prénom
       'date_embauche': ['',

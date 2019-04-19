@@ -28,7 +28,8 @@
         {{getFormMessageError('prenom')}}
       </mat-error>
     </mat-form-field>
-  </div>
+  </div> 
+  
   <div>
     <mat-form-field class="input-standard">
       <mat-label>Date d'embauche*</mat-label>
@@ -38,6 +39,36 @@
       </mat-error>
     </mat-form-field>
   </div>
+  <div>
+    <mat-form-field class="input-standard">
+      <mat-label>N° CNSS</mat-label>
+      <input matInput placeholder="N° CNSS*" formControlName="num_cnss" [(ngModel)]="salarie.num_cnss" />
+      <mat-error *ngIf="salarieForm.get('num_cnss').invalid && salarieForm.get('num_cnss').touched">
+        {{getFormMessageError('num_cnss')}}
+      </mat-error>
+    </mat-form-field>
+  </div>
+
+  <div>
+    <mat-form-field class="input-standard">
+      <mat-label>Contrat</mat-label>
+      <input matInput placeholder="Contrat*" formControlName="contrat_duree_type" [(ngModel)]="salarie.contrat_duree_type" />
+      <mat-error *ngIf="salarieForm.get('contrat_duree_type').invalid && salarieForm.get('contrat_duree_type').touched">
+        {{getFormMessageError('contrat_duree_type')}}
+      </mat-error>
+    </mat-form-field>
+  </div>
+
+  <div>
+    <mat-form-field class="input-standard">
+      <mat-label>Poste intitulé</mat-label>
+      <input matInput placeholder="Poste intitulé*" formControlName="poste_intitule" [(ngModel)]="salarie.poste_intitule" />
+      <mat-error *ngIf="salarieForm.get('poste_intitule').invalid && salarieForm.get('poste_intitule').touched">
+        {{getFormMessageError('poste_intitule')}}
+      </mat-error>
+    </mat-form-field>
+  </div>
+
   <div>
     <mat-form-field class="input-standard">
       <mat-label>Email*</mat-label>
@@ -52,9 +83,16 @@
     <mat-form-field class="input-standard">
       <mat-label>Mobile</mat-label>
       <input matInput placeholder="Mobile" formControlName="mobile" [(ngModel)]="salarie.mobile" />
-      <mat-error *ngIf="salarieForm.get('email').invalid && salarieForm.get('mobile').touched">
+      <mat-error *ngIf="salarieForm.get('mobile').invalid && salarieForm.get('mobile').touched">
         {{getFormMessageError('mobile')}}
       </mat-error>
+    </mat-form-field>
+  </div>
+
+  <div>
+    <mat-form-field class="input-standard">
+      <mat-label>Background</mat-label>
+      <input matInput placeholder="Background" formControlName="description" [(ngModel)]="salarie.description" />      
     </mat-form-field>
   </div>
 

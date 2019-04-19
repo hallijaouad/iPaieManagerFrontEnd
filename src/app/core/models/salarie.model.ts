@@ -6,4 +6,8 @@ export class Salarie{
   date_embauche: string;
   email: string;
   mobile: string;
+  num_cnss: String;
+  contrat_duree_type: String;
+  poste_intitule: String;
+  description: String
 }

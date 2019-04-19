@@ -33,10 +33,27 @@ export class LoginComponent implements OnInit {
     return this.loginForm.controls;
   }
 
+  /**
+   * Authentification
+   */
   login() {
     this.isLoading = true;
     const credentials = this.loginForm.value;
-    this.authService.login(credentials).subscribe(res => this.authService.storeToken(res));
+    this.authService.login(credentials).subscribe(res => this.validateProccessAuth(res));
+  }
+
+  /**
+   * Feedback àprés l'authentification 
+   * @param res 
+   */
+  validateProccessAuth(res){
+    // si token est valide
+    if (res.token){
+      this.authService.storeToken(res)
+    }else{
+      this.isLoading = false;
+    }
+    
   }
 
   private buildForm(): void {

@@ -6,23 +6,29 @@
 
 <fieldset [disabled]="isLoading">
   <form (ngSubmit)="login()" [formGroup]="loginForm">
-      <div class="form-group">
-        <label class="d-block">
-          <input type="text" class="form-control" [placeholder]="'Username'" formControlName="email">          
-        </label>
+    <h3>Connexion</h3>
+     <div>
+      <mat-form-field class="input-standard">
+          <mat-label>Email*</mat-label>
+          <input matInput type="text" class="form-control" [placeholder]="'Email'" formControlName="email">  
+        </mat-form-field>
       </div>
-      <div class="form-group">
-        <label class="d-block">
-          <input type="password" class="form-control" [placeholder]="'Password'" formControlName="password">
-        </label>
-      </div>
-      <div class="form-group">
-        <button type="submit" class="btn btn-primary btn-block btn-raised" type="submit" [disabled]="loginForm.invalid">
-          <span [hidden]="isLoading">Submit</span>
-          <span [hidden]="!isLoading">
-           t
-          </span>
-        </button>
-      </div>     
+
+      <div>
+          <mat-form-field class="input-standard">
+              <mat-label>Mot de passe*</mat-label>
+              <input matInput type="password" class="form-control" [placeholder]="'Password'" formControlName="password"> 
+            </mat-form-field>
+          </div>
+
+          <div>
+              <button type="submit" mat-raised-button color="primary" [disabled]="loginForm.invalid">
+                  <span [hidden]="isLoading">Se connecter</span>
+                  <span [hidden]="!isLoading">
+                   Connexion encours
+                  </span>
+              </button>
+          </div>     
+         
   </form>
 </fieldset>
