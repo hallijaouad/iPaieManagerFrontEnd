@@ -14,9 +14,14 @@
     display: flex;
     align-items: top;
     justify-content: left;
-    width: 250px;    
-    background: #DDD;
+    width: 200px;    
+    background: #1A1E2B;
+    color:#FFFFFF
   }  
+
+  .sidenave-container .mat-list-item{
+    color:#FFFFFF
+  }
   
   .contactSideNavContent{      
       min-height: 600px
