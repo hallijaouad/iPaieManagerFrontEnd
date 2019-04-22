@@ -22,22 +22,22 @@ export class AuthService {
     return of(false);
   }
 
-  storeToken(res) {  
+  storeToken(res) {
     if (res.token_access){
       localStorage.setItem("token_access", res.token_access);
-      this.router.navigate(['/dashboard']);
+      this.router.navigate(['/salaries']);
       return false;
-    }  
-    return true;  
+    }
+    return true;
   }
   getToken() {
     const helper = new JwtHelperService();
-    const token_access = localStorage.getItem("token_access");    
+    const token_access = localStorage.getItem("token_access");
     const isExpired = helper.isTokenExpired(token_access);
     if(isExpired){
       return false;
     }
-    return token_access;    
+    return token_access;
   }
   removeToken() {
     return localStorage.removeItem("token_access");
@@ -49,9 +49,9 @@ export class AuthService {
     if(token_access){
       const decodedToken = helper.decodeToken(token_access);
       console.log(decodedToken)
-      return decodedToken.sub;
-    }   
-    return null; 
+      return decodedToken.user;
+    }
+    return null;
   }
 
 }
