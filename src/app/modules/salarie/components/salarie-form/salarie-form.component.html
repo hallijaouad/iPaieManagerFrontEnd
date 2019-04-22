@@ -33,11 +33,15 @@
   <div>
     <mat-form-field class="input-standard">
       <mat-label>Date d'embauche*</mat-label>
-      <input matInput placeholder="Date d'embauche*" formControlName="date_embauche" [(ngModel)]="salarie.date_embauche" />
+      <input matInput  [matDatepicker]="dpEmbauche" placeholder="dd/mm/YYYY" formControlName="date_embauche" [(ngModel)]="salarie.date_embauche" />
+        <mat-datepicker-toggle matSuffix [for]="dpEmbauche"></mat-datepicker-toggle>
+        <mat-datepicker #dpEmbauche></mat-datepicker>
       <mat-error *ngIf="salarieForm.get('date_embauche').invalid && salarieForm.get('date_embauche').touched">
         {{getFormMessageError('date_embauche')}}
       </mat-error>
     </mat-form-field>
+
+    
   </div>
   <div>
     <mat-form-field class="input-standard">
@@ -52,11 +56,13 @@
   <div>
     <mat-form-field class="input-standard">
       <mat-label>Contrat</mat-label>
-      <input matInput placeholder="Contrat*" formControlName="contrat_duree_type" [(ngModel)]="salarie.contrat_duree_type" />
-      <mat-error *ngIf="salarieForm.get('contrat_duree_type').invalid && salarieForm.get('contrat_duree_type').touched">
-        {{getFormMessageError('contrat_duree_type')}}
-      </mat-error>
-    </mat-form-field>
+    <mat-select placeholder="Contrat" [(ngModel)]="salarie.contrat_duree_type" formControlName="contrat_duree_type">
+      <mat-option *ngFor="let contrat of contrats" [value]="contrat.refext">
+        {{contrat.refext}}
+      </mat-option>
+    </mat-select>
+  </mat-form-field>
+
   </div>
 
   <div>

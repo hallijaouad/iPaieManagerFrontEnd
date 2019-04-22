@@ -1,10 +1,21 @@
-<app-spinner></app-spinner>
-<div>
-  <div class="mat-app-background">
-      <app-navbar></app-navbar>
-      <div class="container">
-        <router-outlet></router-outlet>
-      </div>
-    <!-- <app-footer (changeTheme)="onThemeChange($event)"></app-footer> -->
+<app-spinner></app-spinner> 
+<div class="mat-app-background">
+<app-navbar></app-navbar>
+  <ng-container>
+    <mat-sidenav-container class="sidenave-container">
+      <mat-sidenav #sidenav mode="side" opened="true" class="app-sidenav">
+        <mat-nav-list>
+           <a mat-list-item  *ngFor="let item of navItems" [routerLink]="[item.link]" routerLinkActive="active">
+            <mat-icon mat-list-icon>{{item.icone}}</mat-icon> 
+            <span>{{ item.title }}</span>
+           </a>      
+        </mat-nav-list>
+      </mat-sidenav>
+      <mat-sidenav-content class="contactSideNavContent">
+        <div class="content content-sidebar">
+          <router-outlet></router-outlet>
+        </div>
+      </mat-sidenav-content>
+    </mat-sidenav-container>
+  </ng-container>
   </div>
-</div>

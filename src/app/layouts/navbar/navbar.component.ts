@@ -13,8 +13,7 @@ export class NavbarComponent implements OnInit {
 
   version = environment.version;
   navItems = [
-    { link: '/dashboard', title: 'Dashboard' },
-    { link: '/salaries', title: 'Salaries' }
+    
   ];
 
   constructor(private authService : AuthService) { }
@@ -22,6 +21,10 @@ export class NavbarComponent implements OnInit {
   public userAuth = null;
   ngOnInit() {
     this.userAuth = this.authService.getUserAuth();
+  }
+
+  logout(){
+    
   }
 
 }

@@ -9,6 +9,12 @@ import { Observable } from 'rxjs';
   styleUrls: ['./content-layout.component.scss']
 })
 export class ContentLayoutComponent implements OnInit {
+
+  navItems = [
+    { link: '/dashboard', title: 'Dashboard' ,'icone' : 'dashboard'},
+    { link: '/salaries', title: 'Salariés',  'icone' : 'perm_contact_calendar'},
+    { link: '/admin', title: 'Administration',  'icone' : 'perm_contact_calendar'}
+  ];
   //private overlayContainer: OverlayContainer;
   //theme = 'my-light-theme';
   //isDarkTheme: Observable<boolean>;

@@ -1,0 +1,38 @@
+.auth-card {
+  max-width: 400px;
+  margin:auto;
+  margin-top:60px;
+  background-color:#F3F3F3
+}
+.alert-danger{
+    color:red;
+    text-align:center;
+}
+
+.auth-card fieldset{
+    border:0;
+    padding:0;
+    margin:15px;
+    padding-top:30px;
+    opacity:1;
+}
+.auth-card  .mat-card-header {
+   display:inline
+}
+.auth-card .input-standard{
+    width:100%;     
+     color:#3C3C3C;
+}
+.auth-card .titre,
+.auth-card .mat-card-header .mat-card-header-text{
+    width:100% !important;
+    text-align:center;
+}
+
+.auth-card .mat-card-header-text{
+    width:100% !important
+}
+.auth-card  .mat-card-header .mat-card-title,
+.auth-card .mat-card-actions{
+    text-align:center;
+}

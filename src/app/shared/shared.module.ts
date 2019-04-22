@@ -8,6 +8,8 @@ import { ControlMessagesComponent } from './components/control-messages/control-
 import { SpinnerModule } from './components/spinner/spinner.module';
 
 
+
+
 @NgModule({
     imports: [
         CommonModule,
@@ -28,5 +30,6 @@ import { SpinnerModule } from './components/spinner/spinner.module';
       SpinnerModule,
       CommandBarModule
     ]
+    
 })
 export class SharedModule { }

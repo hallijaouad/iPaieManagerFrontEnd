@@ -7,7 +7,7 @@ import { Component, OnInit } from '@angular/core';
 })
 export class SalarieComponent implements OnInit {
 
-
+   isNotNewSalarie = false;
 
   constructor(
 

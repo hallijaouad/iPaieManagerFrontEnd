@@ -4,6 +4,8 @@ import { FormGroup, FormBuilder, Validators, AbstractControl, ValidationErrors }
 import { Salarie,  SalarieService} from '@app/core';
 import { Router, ActivatedRoute } from '@angular/router';
 
+import * as moment from 'moment';
+
 @Component({
   selector: 'app-salarie-form',
   templateUrl: './salarie-form.component.html',
@@ -14,6 +16,11 @@ export class SalarieFormComponent implements OnInit {
   formTitle = 'Nouveau salarié';
   salarieForm: FormGroup;
   salarie: Salarie = new Salarie();
+
+  contrats = [
+    { id:1, refext: "DETERMINEE" },
+    { id:2, refext: 'INDETERMINEE' }
+  ];
 
   constructor(
     private salarieService: SalarieService,
@@ -34,7 +41,8 @@ export class SalarieFormComponent implements OnInit {
   }
 
   updateSalarieData(res){
-    this.salarie = res;
+    this.salarie = res;    
+    console.log(this.salarie.date_embauche)
   }
 
   doCreateForm(){
@@ -67,8 +75,9 @@ export class SalarieFormComponent implements OnInit {
       'num_cnss': ['',
       Validators.compose([
         Validators.required,
-        Validators.minLength(10),
-        Validators.maxLength(10)
+        Validators.pattern('[0-9]*'),
+        Validators.minLength(5),
+        Validators.maxLength(100)
       ])],
 
          // validation champ contrat
@@ -105,6 +114,8 @@ export class SalarieFormComponent implements OnInit {
   }
 
   doSaveSalarie(salarie: Salarie) {
+    let day = moment(salarie.date_embauche).format("YYYY-MM-DD");
+    salarie.date_embauche = day;
     this.salarieService.store(salarie).subscribe(res => this.doUpdateIhm(res));
   }
 
@@ -137,7 +148,7 @@ export class SalarieFormComponent implements OnInit {
         if (attr.hasError('required')) {
           return 'la prénom du salarié est obligatoire.';
         } else if (attr.hasError('minlength') || attr.hasError('maxlength')) {
-          return 'la pénnom doit avoir entre 3 et 250 caractéres alphanumérique';
+          return 'la prénom doit avoir entre 3 et 250 caractéres alphanumérique';
         }
         break;
       case 'date_embauche':
@@ -148,6 +159,11 @@ export class SalarieFormComponent implements OnInit {
       case 'email':
         if (attr.hasError('required')) {
           return 'L\email est obligatoire.';
+        }
+        break;
+        case 'num_cnss':
+        if (attr.hasError('required') || attr.hasError('pattern')) {
+          return 'le N° cnss doit avoir entre 5 et 20 chiffres.';
         }
         break;
     }

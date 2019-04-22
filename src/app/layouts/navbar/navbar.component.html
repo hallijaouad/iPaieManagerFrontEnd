@@ -1,24 +1,33 @@
-<div class="wrapper">
-  <div class="toolbar">
-    <mat-toolbar color="primary">
-      <div class="container">
-        <span routerLink="" class="branding spacer center d-none d-sm-inline d-md-none">
+
+    <mat-toolbar color="primary">      
+       <span routerLink="">
           {{ 'iPaieManager' }}
         </span>
-
-        <span class="d-none d-md-inline">
-          <button mat-button class="nav-button" *ngFor="let item of navItems" [routerLink]="[item.link]" routerLinkActive="active">
+      <div class="button-row">       
+           <button mat-button  *ngFor="let item of navItems" [routerLink]="[item.link]" routerLinkActive="active">
             {{ item.title }}
-          </button>
-        </span>
+           </button>
+      </div>
+       
         <span class="user-connected-spacer"></span>
         <button mat-icon-button class="mat-icon-button">
           <mat-icon class="mat-icon material-icons" role="img" aria-hidden="true">apps</mat-icon>
         </button>
-        <button mat-icon-button class="mat-icon-button">
-          {{userAuth}}
-        </button>
-      </div>
+      
+    <button mat-icon-button class="mat-icon-button">
+      <mat-icon class="mat-icon material-icons" role="img" aria-hidden="true" [mat-menu-trigger-for]="menuUserConnected">account_circle</mat-icon>
+    </button>           
     </mat-toolbar>
-  </div>
-</div>
+    <mat-menu x-position="before" #menuUserConnected="matMenu">
+    <a class="mat-menu-item" mat-menu-item="" role="menuitem" routerlink="profile" tabindex="0" aria-disabled="false">
+      <mat-icon class="mat-icon material-icons" role="img" aria-hidden="true">person</mat-icon><span>{{userAuth}}</span>
+      <div class="mat-menu-ripple mat-ripple" matripple=""></div>
+    </a>
+    <a class="mat-menu-item" mat-menu-item="" role="menuitem" routerlink="settings" tabindex="0" aria-disabled="false" routerLink="/admin">
+      <mat-icon class="mat-icon material-icons" role="img" aria-hidden="true">settings</mat-icon><span>Administration</span>
+      <div class="mat-menu-ripple mat-ripple" matripple=""></div>
+    </a>
+    <div class="divider"></div>
+    <button mat-menu-item (click)="logout()"><mat-icon class="mat-icon material-icons" role="img" aria-hidden="true">power_settings_new</mat-icon> Deconnexion</button>
+  </mat-menu>
+  

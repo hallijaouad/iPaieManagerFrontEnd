@@ -56,11 +56,14 @@ export class HttpGlobalInterceptor implements HttpInterceptor {
 
         if (err instanceof HttpErrorResponse) {
           switch (err.status) {
-            // Not valid token
-            case 401:
-
-
+            // Not valid token or auth invalid
+            case 401:  
+             case 403:               
+              localStorage.removeItem('token_access');
+              localStorage.clear();
+              this.router.navigate(['auth']); 
               break;
+              
             // invalide data
             case 422:
               this.onErrorValidation(err);

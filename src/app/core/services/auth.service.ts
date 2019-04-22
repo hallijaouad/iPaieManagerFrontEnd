@@ -23,29 +23,31 @@ export class AuthService {
   }
 
   storeToken(res) {  
-    if (res.token){
-      localStorage.setItem("token", res.token);
-      this.router.navigate(['']);
-    }    
+    if (res.token_access){
+      localStorage.setItem("token_access", res.token_access);
+      this.router.navigate(['/dashboard']);
+      return false;
+    }  
+    return true;  
   }
   getToken() {
     const helper = new JwtHelperService();
-    const token = localStorage.getItem("token");    
-    const isExpired = helper.isTokenExpired(token);
+    const token_access = localStorage.getItem("token_access");    
+    const isExpired = helper.isTokenExpired(token_access);
     if(isExpired){
       return false;
     }
-    return token;    
+    return token_access;    
   }
   removeToken() {
-    return localStorage.removeItem("token");
+    return localStorage.removeItem("token_access");
   }
 
   getUserAuth(){
     const helper = new JwtHelperService();
-    const token = this.getToken();
-    if(token){
-      const decodedToken = helper.decodeToken(token);
+    const token_access = this.getToken();
+    if(token_access){
+      const decodedToken = helper.decodeToken(token_access);
       console.log(decodedToken)
       return decodedToken.sub;
     }   

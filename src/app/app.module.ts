@@ -16,6 +16,22 @@ import { AuthLayoutComponent } from './layouts/auth-layout/auth-layout.component
 import { NavbarComponent } from './layouts/navbar/navbar.component';
 
 
+import { DateAdapter, MAT_DATE_FORMATS, MAT_DATE_LOCALE } from '@angular/material';
+import { MomentDateModule, MomentDateAdapter } from '@angular/material-moment-adapter';
+ 
+//create our cost var with the information about the format that we want
+export const MY_FORMATS = {
+  parse: {
+    dateInput: 'DD/MM/YYYY',
+  },
+  display: {
+    dateInput: 'DD/MM/YYYY',
+    monthYearLabel: 'MM YYYY',
+    dateA11yLabel: 'DD/MM/YYYY',
+    monthYearA11yLabel: 'MM YYYY',
+  },
+};
+
 const appearance: MatFormFieldDefaultOptions = {
   appearance: 'outline'
 };
@@ -39,7 +55,10 @@ const appearance: MatFormFieldDefaultOptions = {
     {
       provide: MAT_FORM_FIELD_DEFAULT_OPTIONS,
       useValue: appearance
-    }
+    },
+     { provide: MAT_DATE_LOCALE, useValue: 'fr' }, //you can change useValue
+    { provide: DateAdapter, useClass: MomentDateAdapter, deps: [MAT_DATE_LOCALE] },
+    { provide: MAT_DATE_FORMATS, useValue: MY_FORMATS }
 
   ],
   bootstrap: [AppComponent]

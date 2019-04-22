@@ -1,12 +1,14 @@
 
+<mat-card class="auth-card" >
+   <mat-card-header>
+     <mat-card-title class="titre">Authentification</mat-card-title>
+   </mat-card-header>
+   <mat-card-content>
 
-<div [hidden]="!error" class="alert alert-danger">
-  {{ error }}
-</div>
+
 
 <fieldset [disabled]="isLoading">
-  <form (ngSubmit)="login()" [formGroup]="loginForm">
-    <h3>Connexion</h3>
+  <form (ngSubmit)="login()" [formGroup]="loginForm">   
      <div>
       <mat-form-field class="input-standard">
           <mat-label>Email*</mat-label>
@@ -22,13 +24,21 @@
           </div>
 
           <div>
-              <button type="submit" mat-raised-button color="primary" [disabled]="loginForm.invalid">
+              
+          </div>     
+         
+  </form>
+  <div [hidden]="!error" class="alert alert-danger">
+  {{ error }}
+</div>
+</fieldset>
+</mat-card-content>
+   <mat-card-actions>
+   <button type="submit" mat-raised-button color="primary" [disabled]="loginForm.invalid" (click)="login()">
                   <span [hidden]="isLoading">Se connecter</span>
                   <span [hidden]="!isLoading">
                    Connexion encours
                   </span>
               </button>
-          </div>     
-         
-  </form>
-</fieldset>
+   </mat-card-actions>
+ </mat-card>

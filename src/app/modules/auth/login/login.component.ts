@@ -47,13 +47,14 @@ export class LoginComponent implements OnInit {
    * @param res 
    */
   validateProccessAuth(res){
-    // si token est valide
-    if (res.token){
-      this.authService.storeToken(res)
+    if(res.token_access){
+        this.isLoading = this.authService.storeToken(res); 
     }else{
-      this.isLoading = false;
+       this.error = "Email ou mot de passe est invlaide.";
+       this.isLoading = false;
+       console.log(this.error)
     }
-    
+     
   }
 
   private buildForm(): void {
