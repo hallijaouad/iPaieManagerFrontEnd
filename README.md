@@ -1,3 +1,14 @@
+# Full Stack Development with Spring Boot 2.0 and Angular 7
+# Backend
+https://github.com/hallijaouad/iPaieManagerApi
+# Frontend
+ https://github.com/hallijaouad/iPaieManagerFrontEnd
+# Demo
+https://ipaiemanager.herokuapp.com
+# Code d'accès :
+## email >> admin@gmail.com
+## pwd >> admin
+
 # IPaieManagerFrontEnd
 
 This project was generated with [Angular CLI](https://github.com/angular/angular-cli) version 7.3.7.
