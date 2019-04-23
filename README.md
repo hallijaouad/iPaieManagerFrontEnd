@@ -5,7 +5,6 @@ https://github.com/hallijaouad/iPaieManagerApi
  https://github.com/hallijaouad/iPaieManagerFrontEnd
 # Demo
 https://ipaiemanager.herokuapp.com
-# Code d'accès :
 ## email >> admin@gmail.com
 ## pwd >> admin
 
