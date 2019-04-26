@@ -1,4 +1,5 @@
 export * from './spinner.service';
+export * from './user.service';
 export * from './auth.service';
 export * from './json-api.service';
 export * from './api.service';

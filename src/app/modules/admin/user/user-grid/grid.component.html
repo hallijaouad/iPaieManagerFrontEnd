@@ -1,0 +1,66 @@
+<mat-menu #adherentMenu="matMenu">
+  <button mat-menu-item>Modifier les codes d'accès</button>
+  <button mat-menu-item (click)="doGetUserModal(1)">Modifier l'utilisateur</button>
+  <button mat-menu-item [routerLink]="['/adherentForm']">Désactiver l'utilisateur</button>
+  <button mat-menu-item >Supprimer l'utilisateur</button>
+</mat-menu>
+<div class="mat-elevation-z8">
+  <mat-table #table [dataSource]="dataSource" matSort aria-label="Elements">
+
+    <!-- Nom Column -->
+    <ng-container matColumnDef="nom">
+      <mat-header-cell *matHeaderCellDef mat-sort-header>Nom</mat-header-cell>
+      <mat-cell *matCellDef="let row">{{row.nom}}</mat-cell>
+    </ng-container>
+
+    <!-- Prénom Column -->
+    <ng-container matColumnDef="prenom">
+      <mat-header-cell *matHeaderCellDef mat-sort-header>Prénom</mat-header-cell>
+      <mat-cell *matCellDef="let row">{{row.prenom}}</mat-cell>
+    </ng-container>
+
+    <!-- Group Column -->
+    <ng-container matColumnDef="group">
+      <mat-header-cell *matHeaderCellDef mat-sort-header>Groupe</mat-header-cell>
+      <mat-cell *matCellDef="let row">{{row.utilisateurs_groups.groupname}}</mat-cell>
+    </ng-container>
+
+    <!-- Tél Column -->
+    <ng-container matColumnDef="tel">
+      <mat-header-cell *matHeaderCellDef mat-sort-header>Téléphone</mat-header-cell>
+      <mat-cell *matCellDef="let row">{{row.tel}}</mat-cell>
+    </ng-container>
+    <!-- Email Column -->
+    <ng-container matColumnDef="email">
+      <mat-header-cell *matHeaderCellDef mat-sort-header>Email</mat-header-cell>
+      <mat-cell *matCellDef="let row">{{row.email}}</mat-cell>
+    </ng-container>
+
+
+
+    <!-- Actif Column -->
+    <ng-container matColumnDef="actif">
+      <mat-header-cell *matHeaderCellDef mat-sort-header>Actif</mat-header-cell>
+      <mat-cell *matCellDef="let row" [class.colorGreen]="row.actif" [class.colorRed]="!row.actif"><i class="material-icons">{{row.actif ? 'check_circle_outline' : 'block'}}</i> </mat-cell>
+    </ng-container>
+
+
+    <!-- Actions Column -->
+    <ng-container matColumnDef="actions">
+      <mat-header-cell *matHeaderCellDef mat-sort-header>Actions</mat-header-cell>
+      <mat-cell *matCellDef="let row">
+        <button mat-icon-button [matMenuTriggerFor]="adherentMenu">
+          <mat-icon>more_vert</mat-icon>
+        </button>
+      </mat-cell>
+    </ng-container>
+    <mat-header-row *matHeaderRowDef="displayedColumns"></mat-header-row>
+    <mat-row *matRowDef="let row; columns: displayedColumns;"></mat-row>
+  </mat-table>
+
+  <mat-paginator #paginator   
+    [pageIndex]="0"
+    [pageSize]="10"
+    [pageSizeOptions]="[10, 25, 50, 100, 250]">
+  </mat-paginator>
+</div>
