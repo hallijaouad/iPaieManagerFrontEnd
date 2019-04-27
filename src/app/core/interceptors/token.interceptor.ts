@@ -18,7 +18,7 @@ export class TokenInterceptor implements HttpInterceptor {
           'Content-Type': 'application/vnd.api+json',
           'Authorization': `Bearer ${this.authService.getToken()}`
         }
-      });     
+      });
       return next.handle(request);
     }
 }

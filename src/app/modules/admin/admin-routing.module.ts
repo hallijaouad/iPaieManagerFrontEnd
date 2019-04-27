@@ -4,9 +4,10 @@ import { UserComponent } from './user/user.component';
 const routes: Routes = [
   {
     path: '',
-    component: AdminComponent,    
-    children :[     
+    component: AdminComponent,
+    children :[
       { path: '', redirectTo: 'user' },
+      { path: 'user', component: UserComponent },
     ]
   }
 ];

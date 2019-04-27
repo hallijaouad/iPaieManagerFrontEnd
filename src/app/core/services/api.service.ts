@@ -10,9 +10,9 @@ const BASE_URL = env.serverUrl;
   providedIn: 'root'
 })
 export class ApiService {
-  private options = { 
+  private options = {
     headers: new HttpHeaders().set('Content-Type', 'application/json')
-     .set('access-control-expose-headers', 'x-total-count') 
+     .set('access-control-expose-headers', 'x-total-count')
     };
 
   constructor(private httpClient: HttpClient) {}

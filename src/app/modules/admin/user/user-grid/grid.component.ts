@@ -1,7 +1,8 @@
 import { Component, OnInit, ViewChild } from '@angular/core';
 import { MatPaginator, MatSort } from '@angular/material';
 import { GridDataSource } from './grid-datasource';
-import { UsersService } from '@app/core';
+import { UserService } from '@app/core';
+
 
 @Component({
   selector: 'grid',
@@ -15,13 +16,13 @@ export class GridComponent implements OnInit {
 
   /** Columns displayed in the table. Columns IDs can be added, removed, or reordered. */
   displayedColumns = ['nom', 'prenom', 'group', 'tel', 'email', 'actif', 'actions'];
-  constructor(private usersService: UtilisateursService) { }
+  constructor(private usersService: UserService) { }
   ngOnInit() {
     this.getUsers();
   }
 
   getUsers() {
-    this.usersService.getUsers().subscribe(res => this.setDataSource(res));
+    //this.usersService.getUsers().subscribe(res => this.setDataSource(res));
   }
 
 

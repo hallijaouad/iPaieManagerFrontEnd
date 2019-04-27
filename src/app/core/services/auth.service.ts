@@ -23,7 +23,6 @@ export class AuthService {
   }
 
   storeToken(res) {
-    return true;
     if (res.token_access){
       localStorage.setItem("token_access", res.token_access);
       this.router.navigate(['/salaries']);
@@ -32,7 +31,6 @@ export class AuthService {
     return true;
   }
   getToken() {
-    return true;
     const helper = new JwtHelperService();
     const token_access = localStorage.getItem("token_access");
     const isExpired = helper.isTokenExpired(token_access);
@@ -46,15 +44,14 @@ export class AuthService {
   }
 
   getUserAuth(){
-    return "halli";
-    /*const helper = new JwtHelperService();
+    const helper = new JwtHelperService();
     const token_access = this.getToken();
     if(token_access){
       const decodedToken = helper.decodeToken(token_access);
       console.log(decodedToken)
       return decodedToken.user;
     }
-    return null;*/
+    return null;
   }
 
 }

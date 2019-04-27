@@ -14,15 +14,13 @@ import { User } from '@app/core';
  * encapsulate all logic for fetching and manipulating the displayed data
  * (including sorting, pagination, and filtering).
  */
-export class GridDataSource extends DataSource<Utilisateur> {
+export class GridDataSource extends DataSource<User> {
   data: User[] = [];
 
   constructor(private users, private paginator: MatPaginator, private sort: MatSort) {
     super();
     this.data = users;
   }
-
-
 
   /**
    * Connect this data source to the table. The table will only update when
