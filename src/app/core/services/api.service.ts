@@ -30,7 +30,7 @@ export class ApiService {
 
   public post(path: string, body: object = {}): Observable<any> {
     return this.httpClient
-      .post(BASE_URL + path, JSON.stringify(body), this.options)
+      .post(BASE_URL + path, JSON.stringify(body))
       .pipe(catchError(this.formatErrors));
   }
 

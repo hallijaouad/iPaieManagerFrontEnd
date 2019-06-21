@@ -1,33 +1,33 @@
 import { Component, OnInit, ViewChild } from '@angular/core';
 import { MatPaginator, MatSort } from '@angular/material';
-import { GridDataSource } from './grid-datasource';
+import { UserGridDataSource } from './user-grid-datasource';
 import { UserService } from '@app/core';
 
 
 @Component({
-  selector: 'grid',
-  templateUrl: './grid.component.html',
-  styleUrls: ['./grid.component.css']
+  selector: 'user-grid',
+  templateUrl: './user-grid.component.html',
+  styleUrls: ['./user-grid.component.scss']
 })
-export class GridComponent implements OnInit {
+export class UserGridComponent implements OnInit {
   @ViewChild(MatPaginator) paginator: MatPaginator;
   @ViewChild(MatSort) sort: MatSort;
-  dataSource: GridDataSource;
+  dataSource: UserGridDataSource;
 
   /** Columns displayed in the table. Columns IDs can be added, removed, or reordered. */
-  displayedColumns = ['nom', 'prenom', 'group', 'tel', 'email', 'actif', 'actions'];
+  displayedColumns = ['nom', 'prenom', 'email', 'tel','actif', 'actions'];
   constructor(private usersService: UserService) { }
   ngOnInit() {
     this.getUsers();
   }
 
   getUsers() {
-    //this.usersService.getUsers().subscribe(res => this.setDataSource(res));
+    this.usersService.getAll().subscribe(res => this.setDataSource(res));
   }
 
 
 
   setDataSource(res) {
-    this.dataSource = new GridDataSource(res.data, this.paginator, this.sort);
+    this.dataSource = new UserGridDataSource(res, this.paginator, this.sort);
   }
 }

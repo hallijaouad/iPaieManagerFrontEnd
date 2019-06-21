@@ -14,7 +14,7 @@ import { User } from '@app/core';
  * encapsulate all logic for fetching and manipulating the displayed data
  * (including sorting, pagination, and filtering).
  */
-export class GridDataSource extends DataSource<User> {
+export class UserGridDataSource extends DataSource<User> {
   data: User[] = [];
 
   constructor(private users, private paginator: MatPaginator, private sort: MatSort) {

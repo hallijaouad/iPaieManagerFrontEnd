@@ -6,8 +6,8 @@ const routes: Routes = [
     path: '',
     component: AdminComponent,
     children :[
-      { path: '', redirectTo: 'user' },
-      { path: 'user', component: UserComponent },
+      { path: '', redirectTo: 'users' },
+      { path: 'users', component: UserComponent },
     ]
   }
 ];

@@ -6,9 +6,9 @@ import { Observable, of, empty } from 'rxjs';
 import { map, catchError, tap, finalize } from 'rxjs/operators';
 import { throwError } from 'rxjs';
 import { MatDialog } from '@angular/material';
-
-//import { AppMessageData } from '../ui/dialogs/app-message-dialog/app-message-data';
-//import { AppMessageDialogComponent } from '../ui/dialogs/app-message-dialog/app-message-dialog.component';
+import { SharedModule } from '@app/shared';
+import { AppMessageData } from '../../shared/components/dialogs/app-message-dialog/app-message-data';
+import { AppMessageDialogComponent } from '../../shared/components/dialogs/app-message-dialog/app-message-dialog.component';
 import { SpinnerService } from './../services/spinner.service';
 
 @Injectable({ providedIn: 'root' })
@@ -57,13 +57,13 @@ export class HttpGlobalInterceptor implements HttpInterceptor {
         if (err instanceof HttpErrorResponse) {
           switch (err.status) {
             // Not valid token or auth invalid
-            case 401:  
-             case 403:               
+            case 401:
+             case 403:
               localStorage.removeItem('token_access');
               localStorage.clear();
-              this.router.navigate(['auth']); 
+              this.router.navigate(['auth']);
               break;
-              
+
             // invalide data
             case 422:
               this.onErrorValidation(err);
@@ -87,8 +87,8 @@ export class HttpGlobalInterceptor implements HttpInterceptor {
 
   private onErrorMessage = (error: any) => {
     console.log(error)
-    //const message = new AppMessageData('Erreur : ', error.message, 'error_outline', 'error');
-    //this.dialog.open(AppMessageDialogComponent, { data: message });
+    const message = new AppMessageData('Erreur : ', error.message, 'error_outline', 'error');
+    this.dialog.open(AppMessageDialogComponent, { data: message });
   }
 
   private onErrorValidation = (err: any) => {

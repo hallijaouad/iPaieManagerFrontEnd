@@ -1,19 +1,19 @@
 
 import { fakeAsync, ComponentFixture, TestBed } from '@angular/core/testing';
 
-import { GridComponent } from './grid.component';
+import { UserGridComponent } from './user-grid.component';
 
-describe('GridComponent', () => {
-  let component: GridComponent;
-  let fixture: ComponentFixture<GridComponent>;
+describe('UserGridComponent', () => {
+  let component: UserGridComponent;
+  let fixture: ComponentFixture<UserGridComponent>;
 
   beforeEach(fakeAsync(() => {
     TestBed.configureTestingModule({
-      declarations: [ GridComponent ]
+      declarations: [ UserGridComponent ]
     })
     .compileComponents();
 
-    fixture = TestBed.createComponent(GridComponent);
+    fixture = TestBed.createComponent(UserGridComponent);
     component = fixture.componentInstance;
     fixture.detectChanges();
   }));

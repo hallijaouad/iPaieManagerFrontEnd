@@ -28,8 +28,8 @@
         {{getFormMessageError('prenom')}}
       </mat-error>
     </mat-form-field>
-  </div> 
-  
+  </div>
+
   <div>
     <mat-form-field class="input-standard">
       <mat-label>Date d'embauche*</mat-label>
@@ -40,9 +40,17 @@
         {{getFormMessageError('date_embauche')}}
       </mat-error>
     </mat-form-field>
+</div>
+    <div>
+      <mat-form-field class="input-standard">
+        <mat-label>Salaire brut</mat-label>
+        <input matInput placeholder="Salaire brut*" formControlName="salaire_brut" [(ngModel)]="salarie.salaire_brut" />
+        <mat-error *ngIf="salarieForm.get('salaire_brut').invalid && salarieForm.get('salaire_brut').touched">
+          {{getFormMessageError('salaire_brut')}}
+        </mat-error>
+      </mat-form-field>
+    </div>
 
-    
-  </div>
   <div>
     <mat-form-field class="input-standard">
       <mat-label>N° CNSS</mat-label>
@@ -98,7 +106,7 @@
   <div>
     <mat-form-field class="input-standard">
       <mat-label>Background</mat-label>
-      <input matInput placeholder="Background" formControlName="description" [(ngModel)]="salarie.description" />      
+      <input matInput placeholder="Background" formControlName="description" [(ngModel)]="salarie.description" />
     </mat-form-field>
   </div>
 

@@ -1,0 +1,14 @@
+<div class="message-container">
+  <h1 mat-dialog-title>{{data.title}}</h1>
+  <div class="message-icon">
+      <mat-icon [ngClass]="data.colorClass">{{data.icon}}</mat-icon>
+  </div>
+  <div mat-dialog-content>
+    <div *ngIf="data.messages">
+    <div *ngFor="let msg of data.messages">{{msg.label}} {{msg.text}}</div>
+    </div>
+  </div>
+  <div mat-dialog-actions>
+      <button mat-button [mat-dialog-close] cdkFocusInitial>Ok</button>
+  </div>
+</div>

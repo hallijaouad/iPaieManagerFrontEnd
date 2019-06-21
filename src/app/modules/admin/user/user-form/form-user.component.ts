@@ -1,10 +1,10 @@
 
-import { Component, OnInit, Inject } from '@angular/core';
+import { Component, OnInit, Inject, ɵConsole } from '@angular/core';
 import { Router, ActivatedRoute } from '@angular/router';
 import { HttpClient } from '@angular/common/http';
 import { FormGroup, FormBuilder, Validators, AbstractControl, ValidationErrors } from '@angular/forms';
 import { MatDialog, MatDialogRef, MAT_DIALOG_DATA } from '@angular/material';
-import { User, UserService } from '@app/core';
+import { User, UserService, passwordMatchValidator } from '@app/core';
 
 
 @Component({
@@ -13,7 +13,7 @@ import { User, UserService } from '@app/core';
   styleUrls: ['./form-user.component.css']
 })
 
-export class FormUserComponent implements OnInit {
+export class UserFormComponent implements OnInit {
   utilisateur: User = new User();
   userForm: FormGroup;
   userFormTitre = 'Nouveau utilisateur';
@@ -23,36 +23,37 @@ export class FormUserComponent implements OnInit {
   constructor(
     public http: HttpClient,
     private formBuilder: FormBuilder,
-    public dialogRef: MatDialogRef<FormUserComponent>,
+    public dialogRef: MatDialogRef<UserFormComponent>,
     //private userGroupService: UtilisateursGroupsService,
-    //private userService: UtilisateursService,
+    private userService: UserService,
     private router: Router, private route: ActivatedRoute,
     @Inject(MAT_DIALOG_DATA) private data
   ) { }
 
-  emailOrEmpty(control: AbstractControl): ValidationErrors | null {
-    return control.value === '' ? null : Validators.email(control);
-  }
 
-passwordMatchValidator(g: FormGroup) {
-  return g.get('password').value === g.get('passwordConfirm').value
-    ? null : { 'mismatch': true };
-}
+
 
   ngOnInit() {
 
     this.userForm = this.formBuilder.group({
-      'fk_group': ['', Validators.required],
       'nom': ['', Validators.required],
       'prenom': ['', ''],
       'tel': ['', ''],
-      'fax': ['', ''],
       'email': ['', [Validators.required, Validators.pattern(this.validateEmail)]],
 
-      'passwordGroup': this.formBuilder.group({
-        'password': ['', [Validators.required, Validators.minLength(8), Validators.maxLength(100)]],
-        'passwordConfirm': ['', [Validators.required, Validators.minLength(8), Validators.maxLength(100)]],
-      }, { validator: this.passwordMatchValidator, updateOn: 'blur' }),
+      'passwordGroup': this.formBuilder.group(
+        {
+          'password': ['', [
+              Validators.required,
+              Validators.minLength(8),
+              Validators.maxLength(20)]
+          ],
+          'passwordConfirm': ['',
+              [Validators.required]
+          ],
+        },
+        { validator: passwordMatchValidator }
+      )
 
     });
     //this.userGroupService.getAllGroups().subscribe(res => this.doInitUserForm(res));
@@ -66,15 +67,17 @@ passwordMatchValidator(g: FormGroup) {
    */
   getFormMessageError(input, pk_utilisateur) {
     const attr = this.userForm.get(input);
+
+
     switch (input) {
       case 'nom':
         if (attr.hasError('required')) {
-          return 'Le nom est obligatoite';
+          return 'Le nom est obligatoire';
         }
         break;
       case 'email':
         if (attr.hasError('required')) {
-          return 'L\'email est obligatoite';
+          return 'L\'email est obligatoire';
         } else if (attr.hasError('pattern')) {
           return 'L\'email est invalide';
         }
@@ -82,20 +85,15 @@ passwordMatchValidator(g: FormGroup) {
       case 'passwordGroup.password':
 
         if (attr.hasError('required')) {
-          return 'Le mot de passe est obligatoire';
+          return 'Le mot de passe est <obligatoire></obligatoire>';
         } else if (attr.hasError('minlength') || attr.hasError('maxlength')) {
-          return 'Le mot de passe doit avoir entre 8 et 100 caratéres';
+          return 'Le mot de passe doit avoir entre 8 et 100 caractéres';
         } else if (attr.hasError('mismatch')) {
           return 'Le mot de passe et confirmation ne sont pas identique';
         }
         break;
       case 'passwordGroup.passwordConfirm':
-        console.log(attr.validator);
-        if (attr.hasError('required')) {
-          return 'Le mot de passe est obligatoire';
-        } else if (attr.hasError('minlength') || attr.hasError('maxlength')) {
-          return 'Le mot de passe doit avoir entre 8 et 100 caratéres';
-        } else if (attr.hasError('mismatch')){
+        if (attr.hasError('required') || attr.hasError('pwdmismatch')) {
           return 'Le mot de passe et confirmation ne sont pas identique';
         }
         break;
@@ -109,7 +107,7 @@ passwordMatchValidator(g: FormGroup) {
   }
 
   doSaveUser(user: User) {
-    //this.userService.doSaveUser(user).subscribe(res => this.doUpdateIhm(res));
+    this.userService.store(user).subscribe(res => this.doUpdateIhm(res));
   }
 
   doUpdateIhm(res) {

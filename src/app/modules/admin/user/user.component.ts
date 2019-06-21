@@ -1,7 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { User, UserService } from '@app/core';
 import { MatDialog, MatDialogRef, MAT_DIALOG_DATA } from '@angular/material';
-import { FormUserComponent } from './user-form/form-user.component';
+import { UserFormComponent } from './user-form/form-user.component';
 
 
 @Component({
@@ -31,8 +31,8 @@ export class UserComponent implements OnInit {
    * @param number pk_utilisateur
    */
   doGetUserModal(pk_utilisateur: number) {
-    const userModalRef = this.userModal.open(FormUserComponent, {
-      width: '600px',     
+    const userModalRef = this.userModal.open(UserFormComponent, {
+      width: '600px',
       data: {
         pk_utilisateur: pk_utilisateur
       }

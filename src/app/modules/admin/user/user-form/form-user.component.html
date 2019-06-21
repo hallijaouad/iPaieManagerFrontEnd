@@ -1,6 +1,6 @@
 <h2 mat-dialog-title>{{userFormTitre}}</h2>
 <div mat-dialog-content >
-<div id="div"></div>
+
   <form [formGroup]="userForm">
   <mat-form-field *ngIf="displayUserGroup">
     <mat-select placeholder="Groupe" [(ngModel)]="utilisateur.fk_group" formControlName="fk_group">
@@ -11,8 +11,10 @@
   </mat-form-field>
 
 
+
   <div class="input-full-width">
     <mat-form-field class="input-full-width">
+      <mat-label>Nom* </mat-label>
       <input matInput placeholder="Nom *" formControlName="nom" [(ngModel)]="utilisateur.nom" />
       <mat-error *ngIf="userForm.get('nom').invalid && userForm.get('nom').touched">
         {{getFormMessageError('nom')}}
@@ -22,24 +24,22 @@
 
   <div class="input-full-width">
     <mat-form-field class="input-full-width">
+       <mat-label>Prénom* </mat-label>
       <input matInput  placeholder="Prénom" formControlName="prenom" [(ngModel)]="utilisateur.prenom" />
     </mat-form-field>
   </div>
 
   <div class="input-full-width">
     <mat-form-field class="input-full-width">
+       <mat-label>Téléphone* </mat-label>
       <input matInput placeholder="Téléphone" formControlName="tel" [(ngModel)]="utilisateur.tel" />
     </mat-form-field>
   </div>
 
-  <div>
-    <mat-form-field class="input-full-width">
-      <input matInput placeholder="Fax" formControlName="fax" [(ngModel)]="utilisateur.fax" />
-    </mat-form-field>
-  </div>
 
   <div>
     <mat-form-field class="input-full-width">
+      <mat-label>Email* </mat-label>
       <input matInput placeholder="Email" formControlName="email" [(ngModel)]="utilisateur.email"/>
       <mat-error *ngIf="userForm.get('email').invalid && (userForm.get('email').touched || userForm.get('email').dirty)">
         {{getFormMessageError('email')}}
@@ -49,6 +49,7 @@
   <div formGroupName="passwordGroup">
     <div>
       <mat-form-field class="input-full-width">
+        <mat-label>Mot de passe* </mat-label>
         <input matInput type="password" placeholder="Mot de passe" formControlName="password" [(ngModel)]="utilisateur.password"/>
         <mat-error *ngIf="userForm.get('passwordGroup.password').invalid && userForm.get('passwordGroup.password').touched">
           {{getFormMessageError('passwordGroup.password')}}
@@ -57,11 +58,13 @@
     </div>
     <div>
       <mat-form-field class="input-full-width">
+        <mat-label>Confirmation mot de passe* </mat-label>
         <input matInput type="password" onpaste="return false" autocomplete="OFF" placeholder="Confirmation mot de passe" formControlName="passwordConfirm" [(ngModel)]="utilisateur.passwordConfirm"/>
         <mat-error *ngIf="userForm.get('passwordGroup.passwordConfirm').invalid && userForm.get('passwordGroup.passwordConfirm').touched">
-          {{getFormMessageError('passwordGroup.password')}}
+          {{getFormMessageError('passwordGroup.passwordConfirm')}}
         </mat-error>
       </mat-form-field>
+      {{userForm.errors}}
     </div>
   </div>
 </form>

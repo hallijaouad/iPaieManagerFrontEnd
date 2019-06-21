@@ -7,6 +7,7 @@ export class Salarie{
   email: string;
   mobile: string;
   num_cnss: String;
+  salaire_brut: number;
   contrat_duree_type: String;
   poste_intitule: String;
   description: String

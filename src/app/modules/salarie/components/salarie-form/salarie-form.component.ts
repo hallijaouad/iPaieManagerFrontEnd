@@ -41,7 +41,7 @@ export class SalarieFormComponent implements OnInit {
   }
 
   updateSalarieData(res){
-    this.salarie = res;    
+    this.salarie = res;
     console.log(this.salarie.date_embauche)
   }
 
@@ -79,6 +79,11 @@ export class SalarieFormComponent implements OnInit {
         Validators.minLength(5),
         Validators.maxLength(100)
       ])],
+      'salaire_brut': ['',
+        Validators.compose([
+          Validators.required,
+          Validators.pattern('[0-9.]*'),
+        ])],
 
          // validation champ contrat
          'contrat_duree_type': ['',
@@ -154,6 +159,11 @@ export class SalarieFormComponent implements OnInit {
       case 'date_embauche':
         if (attr.hasError('required')) {
           return 'la date d\embauche  est obligatoire.';
+        }
+        break;
+      case 'salaire_brut':
+        if (attr.hasError('required') || attr.hasError('pattern')) {
+          return 'le montant du salaire brut est invalide.';
         }
         break;
       case 'email':
