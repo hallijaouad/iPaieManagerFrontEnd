@@ -1,7 +1,8 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, ViewChild } from '@angular/core';
 import { User, UserService } from '@app/core';
 import { MatDialog, MatDialogRef, MAT_DIALOG_DATA } from '@angular/material';
 import { UserFormComponent } from './user-form/form-user.component';
+import { UserGridComponent } from './user-grid/user-grid.component';
 
 
 @Component({
@@ -10,7 +11,8 @@ import { UserFormComponent } from './user-form/form-user.component';
   styleUrls: ['./user.component.scss']
 })
 export class UserComponent implements OnInit {
-
+  @ViewChild(UserGridComponent)
+  private userGrid: UserGridComponent;
   users: User[] = [];
   user: User = new User();
   constructor(
@@ -20,6 +22,10 @@ export class UserComponent implements OnInit {
 
   ngOnInit() {
 
+  }
+
+  refreshDataGrid() {
+    this.userGrid.getUsers();
   }
 
   // liste des utilisateurs
@@ -38,8 +44,9 @@ export class UserComponent implements OnInit {
       }
     });
     userModalRef.afterClosed().subscribe(result => {
-      console.log(`Dialog closed: ${result}`);
+      this.refreshDataGrid();
     });
+
   }
 
 }

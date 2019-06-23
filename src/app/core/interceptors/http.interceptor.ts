@@ -85,9 +85,8 @@ export class HttpGlobalInterceptor implements HttpInterceptor {
     );
   }
 
-  private onErrorMessage = (error: any) => {
-    console.log(error)
-    const message = new AppMessageData('Erreur : ', error.message, 'error_outline', 'error');
+  private onErrorMessage = (err: any) => {
+    const message = new AppMessageData('Erreur : ', err.error.message, 'error_outline', 'error');
     this.dialog.open(AppMessageDialogComponent, { data: message });
   }
 

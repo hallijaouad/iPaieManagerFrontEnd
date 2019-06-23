@@ -30,4 +30,9 @@ export class UserService {
     }
   }
 
+  delete(pk_user){
+    return this.apiService.delete(endPointRoutes.user(pk_user));
+  }
+
+
 }

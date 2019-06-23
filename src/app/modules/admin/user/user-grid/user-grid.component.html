@@ -1,8 +1,7 @@
-<mat-menu #adherentMenu="matMenu">
-  <button mat-menu-item>Modifier les codes d'accès</button>
-  <button mat-menu-item (click)="doGetUserModal(1)">Modifier l'utilisateur</button>
-  <button mat-menu-item [routerLink]="['/adherentForm']">Désactiver l'utilisateur</button>
-  <button mat-menu-item >Supprimer l'utilisateur</button>
+<mat-menu #usersMenu="matMenu">
+  <ng-template matMenuContent let-key="key">
+  <button mat-menu-item (click)="deleteUser(key)"><mat-icon mat-list-icon>remove_circle_outline</mat-icon> Supprimer l'utilisateur</button>
+  </ng-template>
 </mat-menu>
 <div class="mat-elevation-z8">
   <mat-table #table [dataSource]="dataSource" matSort aria-label="Elements">
@@ -33,7 +32,6 @@
 
 
 
-
     <!-- Actif Column -->
     <ng-container matColumnDef="actif">
       <mat-header-cell *matHeaderCellDef mat-sort-header>Actif</mat-header-cell>
@@ -45,7 +43,7 @@
     <ng-container matColumnDef="actions">
       <mat-header-cell *matHeaderCellDef mat-sort-header>Actions</mat-header-cell>
       <mat-cell *matCellDef="let row">
-        <button mat-icon-button [matMenuTriggerFor]="adherentMenu">
+        <button mat-icon-button [matMenuTriggerFor]="usersMenu" [matMenuTriggerData]="{key: row.id}">
           <mat-icon>more_vert</mat-icon>
         </button>
       </mat-cell>

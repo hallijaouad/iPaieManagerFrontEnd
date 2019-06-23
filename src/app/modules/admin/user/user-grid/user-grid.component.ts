@@ -21,13 +21,27 @@ export class UserGridComponent implements OnInit {
     this.getUsers();
   }
 
+  /**
+   * All utilisateurs
+   */
   getUsers() {
     this.usersService.getAll().subscribe(res => this.setDataSource(res));
   }
 
 
-
+  // data for grid
   setDataSource(res) {
     this.dataSource = new UserGridDataSource(res, this.paginator, this.sort);
+  }
+
+  /**
+   * Suppression d'un utilisateur
+   * @param pk_user
+   */
+  deleteUser (pk_user){
+    this.usersService.delete(pk_user).subscribe(res => this.refreshUsersGrid(res));
+  }
+  refreshUsersGrid(res){
+    this.getUsers();
   }
 }

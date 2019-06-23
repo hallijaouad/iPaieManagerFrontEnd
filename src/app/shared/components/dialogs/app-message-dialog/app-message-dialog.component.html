@@ -4,8 +4,8 @@
       <mat-icon [ngClass]="data.colorClass">{{data.icon}}</mat-icon>
   </div>
   <div mat-dialog-content>
-    <div *ngIf="data.messages">
-    <div *ngFor="let msg of data.messages">{{msg.label}} {{msg.text}}</div>
+    <div *ngIf="data.message">
+        {{data.message}}
     </div>
   </div>
   <div mat-dialog-actions>

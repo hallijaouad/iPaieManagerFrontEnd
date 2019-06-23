@@ -112,7 +112,8 @@ export class UserFormComponent implements OnInit {
 
   doUpdateIhm(res) {
     if (res) {
-      alert(this.data.pk_utilisateur);
+      //alert(this.data.pk_utilisateur);
+      this.dialogRef.close();
     }
   }
 
